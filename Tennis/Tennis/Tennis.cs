@@ -21,21 +21,11 @@ namespace Tennis
         public static string GetScore(int playerA, int playerB)
         {
             string result;
-           
-            if (playerA == 5 && playerB == 3)
+            if (playerA == playerB)
             {
-                result = "GAME FOR A";
+                result = SetEqualScore(playerA, playerB);
             }
-            else if (playerA == 4 && playerB == 3)
-            {
-                result = "ADVANTAGE-A";
-            }
-            else if (playerA == 3 && playerB == 3)
-            {
-                result = "DEUCE";
-            }
-
-            if(playerB == 3)
+            else if(playerB == 3)
             {
                 result = SetScoreWhenPlayerBIs3(playerA);
             }
@@ -48,6 +38,20 @@ namespace Tennis
                 result = "LOVE-LOVE";
             }
             else result = SetScoreWhenPlayerAIs1Or2(playerA, playerB);
+
+            return result;
+        }
+
+        private static string SetEqualScore(int playerA, int playerB)
+        {
+            string result = string.Empty;
+
+            if (playerA == 3)
+                result = "DEUCE";
+            else if (playerA == 0)
+                result = scoreDict[playerA] + "-" + scoreDict[playerB];
+            else
+                result = scoreDict[playerA] + "-ALL";
 
             return result;
         }
