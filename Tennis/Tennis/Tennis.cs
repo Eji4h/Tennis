@@ -12,18 +12,22 @@ namespace Tennis
         {
             string result;
 
-            if(playerA == 4 && playerB == 3)
+            if (playerA == 5 && playerB == 3)
+            {
+                result = "GAME FOR A";
+            }
+            else if (playerA == 4 && playerB == 3)
             {
                 result = "ADVANTAGE-A";
             }
-            else if(playerA == 3 && playerB == 3)
+            else if (playerA == 3 && playerB == 3)
             {
                 result = "DEUCE";
             }
             else if (playerA == 3 && playerB == 2)
             {
                 result = "40-30";
-            } 
+            }
             else if (playerA == 2 && playerB == 2)
             {
                 result = "30-ALL";
@@ -36,7 +40,7 @@ namespace Tennis
             {
                 result = "15-ALL";
             }
-            else if(playerA == 2 && playerB == 1)
+            else if (playerA == 2 && playerB == 1)
             {
                 result = "30-15";
             }

@@ -53,5 +53,11 @@ namespace TennisTest
         {
             Assert.AreEqual("ADVANTAGE-A", Tennis.Tennis.GetScore(4, 3));
         }
+
+        [Test]
+        public void GetScore_ShouldBe_GAME_FOR_A_When_Input_5_3()
+        {
+            Assert.AreEqual("GAME FOR A", Tennis.Tennis.GetScore(5, 3));
+        }
     }
 }
