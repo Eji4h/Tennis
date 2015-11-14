@@ -8,18 +8,28 @@ namespace Tennis
 {
     public class Tennis
     {
-        public static object GetScore(int p1, int p2)
+        public static string GetScore(int playerA, int playerB)
         {
-            if (p1 == 1 && p2 == 0)
+            string result;
+
+            if (playerA == 1 && playerB == 0)
             {
-                return "15-LOVE";
+                result = "15-LOVE";
             }
-            else if (p1 == 1 && p2 == 1)
+            else if (playerA == 1 && playerB == 1)
             {
-                return "15-ALL";
+                result = "15-ALL";
+            }
+            else if(playerA == 2 && playerB == 1)
+            {
+                result = "30-15";
+            }
+            else
+            {
+                result = "LOVE-LOVE";
             }
 
-            return "LOVE-LOVE";
+            return result;
         }
     }
 }
