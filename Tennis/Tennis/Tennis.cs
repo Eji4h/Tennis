@@ -8,7 +8,8 @@ namespace Tennis
 {
     public class Tennis
     {
-        public static Dictionary<int, string> scoreDict = new Dictionary<int, string>();
+        public static Dictionary<int, string> scoreDict =
+            new Dictionary<int, string>();
 
         static Tennis()
         {
@@ -18,37 +19,42 @@ namespace Tennis
             scoreDict.Add(3, "40");
         }
 
-        public static string GetScore(int playerA, int playerB)
+        public static List<GameRule> GameRuleList
+        {
+            get;
+            set;
+        }
+
+        public static string GetResult(int playerA, int playerB)
         {
             string result;
-            if (playerA == playerB)
-            {
-                result = SetEqualScore(playerA, playerB);
-            }
+
+            if (IsEqualScore(playerA, playerB))
+                result = GetEqualResult(playerA);
             else
-            {
-                result = SetNonEqulScore(playerA, playerB);
-            }
+                result = GetNonEqulResult(playerA, playerB);
 
             return result;
         }
 
-        private static string SetEqualScore(int playerA, int playerB)
+        private static bool IsEqualScore(int playerA, int playerB)
+        {
+            return playerA == playerB;
+        }
+
+        private static string GetEqualResult(int playerA)
         {
             string result = string.Empty;
 
-            if (playerA == 3)
-                result = "DEUCE";
-            else if (playerA == 0)
-                result = scoreDict[playerA] + "-" + scoreDict[playerB];
-            else
-                result = scoreDict[playerA] + "-ALL";
+            GameRuleList.ForEach(gameRule =>
+                {
+                    result += gameRule.GetResult(playerA);
+                });
 
             return result;
         }
 
-
-        private static string SetNonEqulScore(int playerA, int playerB)
+        private static string GetNonEqulResult(int playerA, int playerB)
         {
             string result = string.Empty;
 
