@@ -15,7 +15,13 @@ namespace TennisTest
         [Test]
         public void GetScore_Shouldbe_15_LOVE_When_Input_1_0()
         {
-            Assert.AreEqual("15-Love",Tennis.Tennis.GetScore(1,0));
+            Assert.AreEqual("15-LOVE",Tennis.Tennis.GetScore(1,0));
+        }
+
+        [Test]
+        public void GetScore_Shouldbe_15_All_When_Input_1_1()
+        {
+            Assert.AreEqual("15-ALL",Tennis.Tennis.GetScore(1,1));
         }
     }
 }

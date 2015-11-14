@@ -12,7 +12,11 @@ namespace Tennis
         {
             if (p1 == 1 && p2 == 0)
             {
-                return "15-Love";
+                return "15-LOVE";
+            }
+            else if (p1 == 1 && p2 == 1)
+            {
+                return "15-ALL";
             }
 
             return "LOVE-LOVE";
