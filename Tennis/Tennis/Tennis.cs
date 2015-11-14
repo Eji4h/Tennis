@@ -34,6 +34,11 @@ namespace Tennis
             {
                 result = "DEUCE";
             }
+
+            if(playerB == 3)
+            {
+                result = SetScoreWhenPlayerBIs3(playerA);
+            }
             else if (playerA == 3 && playerB == 2)
             {
                 result = "40-30";
@@ -45,6 +50,28 @@ namespace Tennis
             else result = SetScoreWhenPlayerAIs1Or2(playerA, playerB);
 
             return result;
+        }
+
+        private static string SetScoreWhenPlayerBIs3(int playerA)
+        {
+            string result;
+
+            switch (playerA)
+            {
+                case 5:
+                    result = "GAME FOR A";
+                    break;
+                case 4:
+                    result = "ADVANTAGE-A";
+                    break;
+                case 3:
+                    result = "DEUCE";
+                    break;
+                default: throw new ArgumentOutOfRangeException();
+            }
+
+            return result;
+
         }
 
         private static string SetScoreWhenPlayerAIs1Or2(int playerA, int playerB)
