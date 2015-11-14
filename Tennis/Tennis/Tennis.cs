@@ -25,19 +25,10 @@ namespace Tennis
             {
                 result = SetEqualScore(playerA, playerB);
             }
-            else if(playerB == 3)
+            else
             {
-                result = SetScoreWhenPlayerBIs3(playerA);
+                result = SetNonEqulScore(playerA, playerB);
             }
-            else if (playerA == 3 && playerB == 2)
-            {
-                result = "40-30";
-            }
-            else if (playerA == 0 && playerB == 0)
-            {
-                result = "LOVE-LOVE";
-            }
-            else result = SetScoreWhenPlayerAIs1Or2(playerA, playerB);
 
             return result;
         }
@@ -56,34 +47,18 @@ namespace Tennis
             return result;
         }
 
-        private static string SetScoreWhenPlayerBIs3(int playerA)
+
+        private static string SetNonEqulScore(int playerA, int playerB)
         {
-            string result;
+            string result = string.Empty;
 
-            switch (playerA)
-            {
-                case 5:
-                    result = "GAME FOR A";
-                    break;
-                case 4:
-                    result = "ADVANTAGE-A";
-                    break;
-                case 3:
-                    result = "DEUCE";
-                    break;
-                default: throw new ArgumentOutOfRangeException();
-            }
+            if (playerA == 5)
+                result = "GAME FOR A";
+            else if (playerA == 4)
+                result = "ADVANTAGE-A";
+            else
+                result = scoreDict[playerA] + "-" + scoreDict[playerB];
 
-            return result;
-
-        }
-
-        private static string SetScoreWhenPlayerAIs1Or2(int playerA, int playerB)
-        {
-            string result = scoreDict[playerA] + "-";
-            string bResult = playerA == playerB ? "ALL" : scoreDict[playerB];
-
-            result += bResult;
             return result;
         }
     }
