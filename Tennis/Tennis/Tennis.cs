@@ -8,10 +8,20 @@ namespace Tennis
 {
     public class Tennis
     {
+        public static Dictionary<int, string> scoreDict = new Dictionary<int, string>();
+
+        static Tennis()
+        {
+            scoreDict.Add(0, "LOVE");
+            scoreDict.Add(1, "15");
+            scoreDict.Add(2, "30");
+            scoreDict.Add(3, "40");
+        }
+
         public static string GetScore(int playerA, int playerB)
         {
             string result;
-
+           
             if (playerA == 5 && playerB == 3)
             {
                 result = "GAME FOR A";
@@ -28,27 +38,21 @@ namespace Tennis
             {
                 result = "40-30";
             }
-            else if (playerA == 2 && playerB == 2)
-            {
-                result = "30-ALL";
-            }
-            else if (playerA == 1 && playerB == 0)
-            {
-                result = "15-LOVE";
-            }
-            else if (playerA == 1 && playerB == 1)
-            {
-                result = "15-ALL";
-            }
-            else if (playerA == 2 && playerB == 1)
-            {
-                result = "30-15";
-            }
-            else
+            else if (playerA == 0 && playerB == 0)
             {
                 result = "LOVE-LOVE";
             }
+            else result = SetScoreWhenPlayerAIs1Or2(playerA, playerB);
 
+            return result;
+        }
+
+        private static string SetScoreWhenPlayerAIs1Or2(int playerA, int playerB)
+        {
+            string result = scoreDict[playerA] + "-";
+            string bResult = playerA == playerB ? "ALL" : scoreDict[playerB];
+
+            result += bResult;
             return result;
         }
     }
