@@ -11,7 +11,12 @@ namespace Tennis
         public static string GetScore(int playerA, int playerB)
         {
             string result;
-            if(playerA == 3 && playerB == 3)
+
+            if(playerA == 4 && playerB == 3)
+            {
+                result = "ADVANTAGE-A";
+            }
+            else if(playerA == 3 && playerB == 3)
             {
                 result = "DEUCE";
             }
