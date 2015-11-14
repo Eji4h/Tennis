@@ -41,5 +41,11 @@ namespace TennisTest
         {
             Assert.AreEqual("40-30", Tennis.Tennis.GetScore(3, 2));
         }
+
+        [Test]
+        public void GetScore_ShouldBe_DEUCE_When_Input_3_3()
+        {
+            Assert.AreEqual("DEUCE", Tennis.Tennis.GetScore(3, 3)); 
+        }
     }
 }
